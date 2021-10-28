@@ -41,4 +41,4 @@ class Solution:
             else:
                 substringWindow.remove(s[start])
                 start +=1
-        return max
+        return max 
