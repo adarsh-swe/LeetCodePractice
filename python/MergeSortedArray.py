@@ -4,38 +4,36 @@ class Solution:
 #         Do not return anything, modify nums1 in-place instead.
 #         MERGE IN PLACE 
 #         """
-#         if n == 0:
-#             return nums1
-#         elif m == 0:
-#             return nums2
+
+
+        #BAD SOLUTION
+        # for i in range(n):
+        #     nums1[i+m] = nums2[i]
             
-#         i=0
-#         j=0
-        
-#         while(i<m):
-#             if(j<n and (nums2[j] < nums1[i])):
-#                 shift = 1
-#                 prevVal = nums1[i]
-                
-#                 #shifting all by 1 to right side 
-#                 while(nums1[i+shift] != 0):
-#                     nextVal = nums1[i+shift]
-#                     nums1[i+shift] = prevVal
-#                     prevVal = nextVal
-#                     shift += 1
-                    
-#                 nums1[i+shift] = prevVal
-#                 nums1[i] = nums2[j]
-#                 j+=1
-#             elif(nums1[i] == 0):
-#                 nums1[i] = nums2[j]
-#                 i+=1
-#                 j+=1
-#             else:
-#                 i+=1
-            
-    
-        for i in range(n):
-            nums1[i+m] = nums2[i]
-            
-        nums1.sort()
+        # nums1.sort()
+
+
+        #IN PLACE 
+
+        m-=1
+        n-=1 
+
+        i = len(nums1)-1
+
+        while(i >= 0):
+            if(m<0):
+                nums1[i] = nums2[n]
+                n-=1 
+            elif(n<0):
+                nums1[i] = nums1[m]
+                m-=1
+            else:
+                if(nums1[m] > nums2[n]):
+                    nums1[i] = nums1[m]
+                    m-=1 
+                else:
+                    nums1[i] = nums2[n]
+                    n-=1
+            i-=1
+
+               
