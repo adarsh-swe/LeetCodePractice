@@ -4,25 +4,24 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         
-        res = ListNode()   
-        currNode = res
+        res = ListNode()
+        curr = res
 
-        while(l1 != None or l2 != None):
-            if(l1 != None and l2 != None): #when both lists non empty 
-                if(l1.val <= l2.val):
-                    currNode.next = ListNode(l1.val)
-                    l1 = l1.next
+        while(list1 != None or list2 != None):
+            if(list1 != None and list2 != None):
+                if(list1.val <= list2.val):
+                    curr.next = ListNode(list1.val)
+                    list1 = list1.next
                 else:
-                    currNode.next = ListNode(l2.val)
-                    l2 = l2.next
-            elif(l1 != None): #when l2 empty
-                currNode.next = ListNode(l1.val)
-                l1 = l1.next
-            elif(l2!= None): #when l1 empty
-                currNode.next = ListNode(l2.val)
-                l2 = l2.next
-            currNode = currNode.next
-
+                    curr.next = ListNode(list2.val)
+                    list2 = list2.next
+            elif(list1 != None):
+                curr.next = ListNode(list1.val)
+                list1 = list1.next
+            elif(list2 != None):
+                curr.next = ListNode(list2.val)
+                list2 = list2.next 
+            curr = curr.next
         return res.next
